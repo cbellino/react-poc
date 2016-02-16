@@ -1,19 +1,25 @@
-import { Map, List } from 'immutable';
-import { createStore, compose, combineReducers } from 'redux';
-import { persistState, instrument } from 'redux-devtools';
-import { commentsReducer } from '../reducers/comments';
-import { appReducer } from '../reducers/app';
+import { Map } from 'immutable'
+import { createStore, compose } from 'redux'
+import { combineReducers } from 'redux-immutable'
+import * as reducers from '../reducers'
 
-export default function configureStore (initialState) {
+const INITIAL_STATE = Map()
+
+export default function configureStore(initialState = INITIAL_STATE) {
   const finalCreateStore = compose(
     typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f,
-  )(createStore);
+  )(createStore)
 
-  const reducer = combineReducers({
-    appReducer: appReducer,
-    commentsReducer: commentsReducer,
-  });
-  const store = finalCreateStore(reducer, initialState);
+  const reducer = combineReducers(reducers)
+  const store = finalCreateStore(reducer, initialState)
 
-  return store;
+  // Enable Webpack hot module replacement for reducers
+  if (module.hot) {
+    module.hot.accept('../reducers', () => {
+      const nextRootReducer = combineReducers(require('../reducers'))
+      store.replaceReducer(nextRootReducer)
+    })
+  }
+
+  return store
 }

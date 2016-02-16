@@ -7,16 +7,14 @@ import TrackListHeader from './TrackListHeader';
 
 const TrackList = ({ tracks }) => {
 
-  const trackListItems = tracks.map(function(track) {
-    return (
-      <TrackListItem track={track} />
-    );
-  });
+  const trackListItemNodes = () => tracks.map(track =>
+    <TrackListItem key={track.id} track={track} />
+  )
 
   return (
     <div className="trackList">
       <TrackListHeader />
-      {trackListItems}
+      {tracks ? trackListItemNodes() : 'No track'}
     </div>
   )
 }

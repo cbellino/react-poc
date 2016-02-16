@@ -1,10 +1,10 @@
-import { connect } from 'react-redux';
-import TrackList from '../components/TrackList/TrackList';
+import { connect } from 'react-redux'
+import TrackList from '../components/TrackList/TrackList'
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
-    tracks: state.get('tracks'),
-  };
+    tracks: state.get('tracks')
+  }
 }
 
-export default connect(mapStateToProps)(TrackList);
+export default connect(mapStateToProps)(TrackList)
