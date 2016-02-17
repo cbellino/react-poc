@@ -1,23 +1,30 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
+import Immutable from 'immutable'
+import ImmutablePropTypes from 'react-immutable-proptypes'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import List from 'material-ui/lib/lists/list'
 
 import s from './TrackList.scss'
-import TrackListItem from './TrackListItem'
+import TrackListItemContainer from '../../containers/TrackListItemContainer'
 import TrackListHeader from './TrackListHeader'
 
-const TrackList = ({ tracks = List() }) => {
+const TrackList = ({ tracks = Immutable.List() }) => {
 
-  const trackListItemNodes = tracks.map(track =>
-    <TrackListItem key={track.get('id')} track={track} />
+  const trackNodes = tracks.map(track =>
+    <TrackListItemContainer key={track.get('id')} track={track} />
   )
 
   return (
     <div className={s.root}>
-      <TrackListHeader count={tracks.count()} />
-      <hr/>
-      {tracks.count() > 0 ? trackListItemNodes : <i>{'No track'}</i>}
+      <List subheader="General">
+        {tracks.count() > 0 ? trackNodes : <i>{'No track'}</i>}
+      </List>
     </div>
   )
+}
+
+TrackList.propTypes = {
+  tracks: ImmutablePropTypes.list.isRequired
 }
 
 export default withStyles(TrackList, s)
