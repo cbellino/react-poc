@@ -10,7 +10,7 @@
 import keyMirror from 'fbjs/lib/keyMirror';
 
 export default keyMirror({
-  ADD_COMMENT: null,
-  REMOVE_COMMENT: null,
-  SET_COMMENTS: null,
+  ADD_TRACK: null,
+  REMOVE_TRACK: null,
+  SET_TRACKS: null,
 });

@@ -1,22 +1,23 @@
-import React from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import React from 'react'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
 
-import s from './TrackList.scss';
-import TrackListItem from './TrackListItem';
-import TrackListHeader from './TrackListHeader';
+import s from './TrackList.scss'
+import TrackListItem from './TrackListItem'
+import TrackListHeader from './TrackListHeader'
 
-const TrackList = ({ tracks }) => {
+const TrackList = ({ tracks = List() }) => {
 
-  const trackListItemNodes = () => tracks.map(track =>
-    <TrackListItem key={track.id} track={track} />
+  const trackListItemNodes = tracks.map(track =>
+    <TrackListItem key={track.get('id')} track={track} />
   )
 
   return (
-    <div className="trackList">
-      <TrackListHeader />
-      {tracks ? trackListItemNodes() : 'No track'}
+    <div className={s.root}>
+      <TrackListHeader count={tracks.count()} />
+      <hr/>
+      {tracks.count() > 0 ? trackListItemNodes : <i>{'No track'}</i>}
     </div>
   )
 }
 
-export default withStyles(TrackList, s);
+export default withStyles(TrackList, s)

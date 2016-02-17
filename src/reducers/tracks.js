@@ -1,11 +1,7 @@
-import { Map, List, fromJS } from 'immutable';
+import { List } from 'immutable';
 import actionTypes from '../constants/actionTypes';
 
-const INITIAL_STATE = fromJS([
-  { id: '1', name: 'Awesome track' },
-  { id: '2', name: 'Fugly track' },
-  { id: '3', name: 'Yet another track' }
-])
+const INITIAL_STATE = List()
 
 const tracksReducer = (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {

@@ -1,15 +1,6 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import React, { Component, PropTypes } from 'react';
 import { createStore } from 'redux';
-import { List, Map } from 'immutable';
+import { List, Map, fromJS } from 'immutable';
 import { Provider } from 'react-redux';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
@@ -18,7 +9,19 @@ import configureStore from '../../core/configureStore';
 import TracksContainer from '../../containers/TracksContainer';
 
 const title = 'Tracks';
-const store = configureStore();
+const INITIAL_STATE = fromJS({
+  tracks: [
+    { id: 'track-1', name: 'Awesome track' },
+    { id: 'track-2', name: 'Fugly track' },
+    { id: 'track-3', name: 'Yet another track' },
+    { id: 'track-4', name: 'Yay' },
+    { id: 'track-5', name: 'Waffles' },
+    { id: 'track-6', name: 'Serious cat is serious' },
+    { id: 'track-7', name: 'A track with a loooooooooooooooong name' },
+    { id: 'track-8', name: 'Wow, such track' },
+  ]
+})
+const store = configureStore(INITIAL_STATE);
 
 class IndexPage extends Component {
 
