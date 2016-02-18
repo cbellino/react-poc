@@ -8,17 +8,18 @@ import CardHeader from 'material-ui/lib/card/card-header'
 import CardText from 'material-ui/lib/card/card-text'
 
 import s from './TrackListItem.scss'
+import CreativeListItem from '../CreativeList/CreativeListItem'
 
 const TrackListItem = ({ track, creatives }) => {
 
   const creativeNodes = creatives.map(creative =>
-    <div key={creative.get('id')} creative={creative}>{creative.get('name')}</div>
+    <CreativeListItem key={creative.get('id')} creative={creative} />
   )
   const hasCreatives = creatives.count() > 0
   const subtitle = `${creatives.count()} creatives`
 
   return (
-    <Card>
+    <Card expandedInitially={false}>
       <CardHeader
         title={track.get('name')}
         subtitle={subtitle}

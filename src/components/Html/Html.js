@@ -47,6 +47,7 @@ class Html extends Component {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="apple-touch-icon" href="apple-touch-icon.png" />
         <style id="css" dangerouslySetInnerHTML={{ __html: this.props.css }} />
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300italic,300,500,500italic,700,700italic' rel='stylesheet' type='text/css' />
       </head>
       <body>
         <div id="app" dangerouslySetInnerHTML={{ __html: this.props.body }} />

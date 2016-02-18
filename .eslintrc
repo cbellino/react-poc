@@ -1,7 +1,10 @@
 {
   "extends": "rackt",
   "globals": {
-    "__DEV__": true
+    "__DEV__": true,
+    "describe": true,
+    "it": true,
+    "expect": true
   },
   "rules": {
     "react/jsx-uses-react": 1,
@@ -9,6 +12,7 @@
     "react/wrap-multilines": 2
   },
   "plugins": [
-    "react"
+    "react",
+    "jasmine"
   ]
 }

@@ -1,0 +1,37 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+h4 {
+  width: 100%;
+}
+
+.image {
+  flex: 1;
+  max-width: 120px;
+  margin-right: 16px;
+
+  > img {
+    max-width: 100%;
+  }
+}
+
+.content {
+  flex: 1;
+}
+
+.sponso {
+  margin-top: 8px;
+  width: 100%;
+  text-align: right;
+
+  > img {
+    max-width: 30px;
+  }
+}
+
+.divider {
+  margin-top: 16px !important;
+  width: 100%;
+}
