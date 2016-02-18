@@ -19,6 +19,11 @@ const INITIAL_STATE = fromJS({
     { id: 'track-6', name: 'Serious cat is serious' },
     { id: 'track-7', name: 'A track with a loooooooooooooooong name' },
     { id: 'track-8', name: 'Wow, such track' },
+  ],
+  creatives: [
+    { id: 'creative-1', name: 'Creative 1', trackId: 'track-1' },
+    { id: 'creative-2', name: 'Creative 2', trackId: 'track-1' },
+    { id: 'creative-3', name: 'Creative 3', trackId: 'track-1' }
   ]
 })
 const store = configureStore(INITIAL_STATE);
