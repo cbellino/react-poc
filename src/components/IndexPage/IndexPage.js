@@ -8,6 +8,8 @@ import s from './IndexPage.scss'
 import configureStore from '../../core/configureStore'
 import TracksContainer from '../../containers/TracksContainer'
 
+import DevTools from '../../containers/DevTools/DevTools'
+
 const title = 'Tracks'
 const store = configureStore()
 
@@ -94,14 +96,13 @@ class IndexPage extends Component {
 
   render() {
     return (
-      <div className={s.root}>
+      <Provider store={store} className={s.root}>
         <div className={s.container}>
           <h1>{IndexPage}</h1>
-          <Provider store={store}>
-            <TracksContainer />
-          </Provider>
+          <TracksContainer />
+          <DevTools />
         </div>
-      </div>
+      </Provider>
     )
   }
 

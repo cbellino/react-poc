@@ -2,16 +2,15 @@ import { Map } from 'immutable'
 import { createStore, compose } from 'redux'
 import { combineReducers } from 'redux-immutable'
 import * as reducers from '../reducers'
+import DevTools from '../containers/DevTools/DevTools'
 
-const INITIAL_STATE = Map()
+const enhancer = compose(
+  DevTools.instrument()
+)
 
-export default function configureStore(initialState = INITIAL_STATE) {
-  const finalCreateStore = compose(
-    typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f,
-  )(createStore)
-
+export default function configureStore(initialState = Map()) {
   const reducer = combineReducers(reducers)
-  const store = finalCreateStore(reducer, initialState)
+  const store = createStore(reducer, initialState, enhancer)
 
   // Enable Webpack hot module replacement for reducers
   if (module.hot) {
