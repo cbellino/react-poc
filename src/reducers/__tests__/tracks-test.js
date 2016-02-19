@@ -1,5 +1,3 @@
-import '../../../tools/auto_mock_off'
-
 import { fromJS } from 'immutable'
 import actionTypes from '../../constants/actionTypes'
 import tracksReducer from '../tracks'
