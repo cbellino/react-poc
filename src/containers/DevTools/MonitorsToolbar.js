@@ -10,20 +10,38 @@ const styles = {
     right: '0',
     bottom: '0',
     left: '0',
-    zIndex: '2'
+    zIndex: '3'
   },
   LogMonitor: {
     position: 'fixed',
     width: '350px',
     top: '0',
     right: '0',
-    bottom: '0'
+    bottom: '0',
+    zIndex: '3'
   },
   Dispatcher: {
     position: 'fixed',
-    width: '350px',
+    width: '500px',
     top: '-5px',
-    left: '0'
+    left: '0',
+    zIndex: '3'
+  },
+  ManifestComponent: {
+    position: 'fixed',
+    width: '380px',
+    top: '0',
+    right: '0',
+    bottom: '0',
+    zIndex: '3'
+  },
+  ChartMonitor: {
+    position: 'fixed',
+    top: '80px',
+    height: '100%',
+    right: '0',
+    left: '0',
+    zIndex: '2'
   }
 }
 
@@ -97,8 +115,8 @@ export default class MonitorsToolbar extends Component {
 
     return (
       <div>
-        {monitorIcons}
-        {monitorNodes}
+        <div>{monitorIcons}</div>
+        <div>{monitorNodes}</div>
       </div>
     )
   }

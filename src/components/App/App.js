@@ -116,15 +116,15 @@ class App extends Component {
       onPageNotFound: PropTypes.func,
     }),
     children: PropTypes.element.isRequired,
-    error: PropTypes.object,
-  }
+    error: PropTypes.object
+  };
 
   static childContextTypes = {
     insertCss: PropTypes.func.isRequired,
     onSetTitle: PropTypes.func.isRequired,
     onSetMeta: PropTypes.func.isRequired,
-    onPageNotFound: PropTypes.func.isRequired,
-  }
+    onPageNotFound: PropTypes.func.isRequired
+  };
 
   getChildContext() {
     const context = this.props.context
@@ -132,7 +132,7 @@ class App extends Component {
       insertCss: context.insertCss || emptyFunction,
       onSetTitle: context.onSetTitle || emptyFunction,
       onSetMeta: context.onSetMeta || emptyFunction,
-      onPageNotFound: context.onPageNotFound || emptyFunction,
+      onPageNotFound: context.onPageNotFound || emptyFunction
     }
   }
 
