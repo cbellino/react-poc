@@ -2,27 +2,14 @@ import React from 'react'
 import { Map } from 'immutable'
 
 import { createDevTools } from 'redux-devtools'
-import DockMonitor from 'redux-devtools-dock-monitor'
-import MultipleMonitors from './MultipleMonitors'
+import MonitorsToolbar from './MonitorsToolbar'
 import LogMonitor from 'redux-devtools-log-monitor'
 import SliderMonitor from 'redux-slider-monitor'
 import Dispatcher from 'redux-devtools-dispatch'
-
-const styles = [
-  {
-    height: '85%'
-  },
-  {
-    position: 'fixed',
-    right: 0,
-    bottom: 0,
-    left: 0,
-    zIndex: 2
-  },
-  {
-    position: 'relative'
-  }
-]
+import Colors from 'material-ui/lib/styles/colors'
+import SliderIcon from 'material-ui/lib/svg-icons/action/trending-flat'
+import LogIcon from 'material-ui/lib/svg-icons/navigation/menu'
+import DispatcherIcon from 'material-ui/lib/svg-icons/communication/present-to-all'
 
 const actionCreators = {
   addTrack(track) {
@@ -31,18 +18,11 @@ const actionCreators = {
 }
 
 const DevTools = createDevTools(
-  <DockMonitor
-    defaultIsVisible={false}
-    toggleVisibilityKey="ctrl-d"
-    changePositionKey="ctrl-e"
-    defaultPosition="right"
-  >
-    <MultipleMonitors styles={styles}>
-      <LogMonitor theme="solarized" />
-      <SliderMonitor keyboardEnabled />
-      <Dispatcher actionCreators={actionCreators} />
-    </MultipleMonitors>
-  </DockMonitor>
+  <MonitorsToolbar>
+    <SliderMonitor keyboardEnabled icon={<SliderIcon color={Colors.blue50} />} />
+    <LogMonitor theme="solarized" icon={<LogIcon color={Colors.blue50} />} />
+    <Dispatcher actionCreators={actionCreators} icon={<DispatcherIcon color={Colors.blue50} />} />
+  </MonitorsToolbar>
 )
 
 export default DevTools

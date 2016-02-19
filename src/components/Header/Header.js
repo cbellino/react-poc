@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Header.scss';
+import React, { Component } from 'react'
+import withStyles from 'isomorphic-style-loader/lib/withStyles'
+
+import DevTools from '../../containers/DevTools/DevTools'
+import s from './Header.scss'
 
 class Header extends Component {
 
@@ -10,11 +12,14 @@ class Header extends Component {
         <div className={s.container}>
           <img src={require('./logo-small.png')} width="38" height="38" alt="React" />
           <span className={s.brandTxt}>Adyoulike</span>
+          <div className={s.devTools}>
+            <DevTools />
+          </div>
         </div>
       </div>
-    );
+    )
   }
 
 }
 
-export default withStyles(Header, s);
+export default withStyles(Header, s)

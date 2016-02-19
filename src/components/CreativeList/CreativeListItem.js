@@ -7,7 +7,6 @@ import Divider from 'material-ui/lib/divider'
 import s from './CreativeListItem.scss'
 
 const CreativeListItem = ({ creative }) => {
-
   return (
     <div className={s.root}>
       <h4>{creative.get('name')}</h4>
