@@ -19,7 +19,7 @@ const TrackListItem = ({ track, creatives }) => {
   const subtitle = `${creatives.count()} creatives`
 
   return (
-    <Card expandedInitially={false}>
+    <Card initiallyExpanded={hasCreatives}>
       <CardHeader
         title={track.get('name')}
         subtitle={subtitle}
