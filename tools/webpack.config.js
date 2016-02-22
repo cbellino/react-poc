@@ -146,6 +146,43 @@ const clientConfig = extend(true, {}, config, {
 });
 
 //
+// Configuration for the Back Office client-side bundle (bo.js)
+// -----------------------------------------------------------------------------
+
+const boConfig = extend(true, {}, config, {
+  entry: './src/bo.js',
+  output: {
+    path: path.join(__dirname, '../build/public'),
+    filename: DEBUG ? 'bo.js?[hash]' : 'bo.[hash].js'
+  },
+
+  // Choose a developer tool to enhance debugging
+  // http://webpack.github.io/docs/configuration.html#devtool
+  devtool: DEBUG ? 'cheap-module-eval-source-map' : false,
+  plugins: [
+    new webpack.DefinePlugin(GLOBALS),
+    new AssetsPlugin({
+      path: path.join(__dirname, '../build'),
+      filename: 'assets.js',
+      processOutput: x => `module.exports = ${JSON.stringify(x)}`
+    }),
+    ...(!DEBUG ? [
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
+          screw_ie8: true,
+
+          // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
+          warnings: VERBOSE
+        }
+      }),
+      new webpack.optimize.AggressiveMergingPlugin()
+    ] : [])
+  ]
+})
+
+//
 // Configuration for the server-side bundle (server.js)
 // -----------------------------------------------------------------------------
 
@@ -183,4 +220,4 @@ const serverConfig = extend(true, {}, config, {
   ],
 });
 
-export default [clientConfig, serverConfig];
+export default [clientConfig, boConfig, serverConfig];

@@ -4,7 +4,7 @@ import { List } from 'immutable'
 import TrackListItem from '../components/TrackList/TrackListItem'
 
 function mapStateToProps(state, { track }) {
-  const creatives = state.get('creatives') ?
+  const creatives = track && state.get('creatives') ?
                     state.get('creatives').filter(creative => creative.get('trackId') === track.get('id')) :
                     List()
 

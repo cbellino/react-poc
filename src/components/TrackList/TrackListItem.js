@@ -19,7 +19,7 @@ const TrackListItem = ({ track, creatives }) => {
   const subtitle = `${creatives.count()} creatives`
 
   return (
-    <Card initiallyExpanded={hasCreatives}>
+    <Card initiallyExpanded={false}>
       <CardHeader
         title={track.get('name')}
         subtitle={subtitle}
@@ -38,4 +38,4 @@ TrackListItem.propTypes = {
   creatives: ImmutablePropTypes.list.isRequired
 }
 
-export default withStyles(TrackListItem, s)
+export default TrackListItem

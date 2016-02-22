@@ -23,4 +23,4 @@ TrackList.propTypes = {
   tracks: ImmutablePropTypes.list.isRequired
 }
 
-export default withStyles(TrackList, s)
+export default TrackList

@@ -33,4 +33,4 @@ CreativeListItem.propTypes = {
   creative: ImmutablePropTypes.map.isRequired
 }
 
-export default withStyles(CreativeListItem, s)
+export default CreativeListItem

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 
 import s from './IndexPage.scss'
-import TracksContainer from '../../containers/TracksContainer'
+import TrackListContainer from '../../containers/TrackListContainer'
 
 const title = 'Tracks'
 
@@ -21,7 +21,7 @@ class IndexPage extends Component {
       <div className={s.container}>
         <h1>{IndexPage}</h1>
         <div className={s.root}>
-          <TracksContainer />
+          <TrackListContainer />
         </div>
       </div>
     )
